@@ -1,32 +1,39 @@
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 success_msg = 'Success: Login Sucessful.'
 error_msg = 'Error: Invalid Credentials. Please try again.' 
+test_url = "http://localhost:8000/index"
 
-driver = webdriver.Chrome('./chromedriver')
-driver.get("http://localhost:8000/index")  
+ser = Service("./chromedriver.exe")
+op = webdriver.ChromeOptions()
+op.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(service=ser, options=op)
+# driver.get(test_url)  
 
 def try_login(user, pwd):
-    driver.get("http://localhost:8000/index")    
-    username = driver.find_element_by_name("username")
+    driver.get(test_url)    
+    username = driver.find_element(by=By.NAME, value="username") 
     username.send_keys(user)
 
-    password = driver.find_element_by_name("password")
+    password = driver.find_element(by=By.NAME, value="password") 
     password.send_keys(pwd)
     username.send_keys(Keys.RETURN)
 
-    message = driver.find_element_by_name("message")
+    message = driver.find_element(by=By.NAME, value="message")
     txt = message.text
     return txt
 
 def try_login_user_pwd_msg(user, pwd):
-    driver.get("http://localhost:8000/index")    
-    username = driver.find_element_by_name("username")
+    driver.get(test_url)    
+    username = driver.find_element(by=By.NAME, value="username") 
     username.send_keys(user)
 
-    password = driver.find_element_by_name("password")
+    password = driver.find_element(by=By.NAME, value="password") 
+
     password.send_keys(pwd)
 
     username.send_keys(Keys.RETURN)
@@ -48,3 +55,5 @@ def test_login_empty():
 
 def test_password_empty():  
     assert try_login_user_pwd_msg("123", "")[1] == "Please fill out this field."
+    driver.quit()
+

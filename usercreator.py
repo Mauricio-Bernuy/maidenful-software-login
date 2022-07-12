@@ -1,9 +1,9 @@
-from setuptable import *
+import setuptable
 
 # createtable()
-registeruser("admin","admin")
-registeruser("lolazo","123")
-registeruser("1v1menub","xd1")
-registeruser("waoty","waiti")
-registeruser("unclemachete","trc")
-registeruser("munay","munay!")
+setuptable.registeruser("admin","admin")
+setuptable.registeruser("lolazo","123")
+setuptable.registeruser("1v1menub","xd1")
+setuptable.registeruser("waoty","waiti")
+setuptable.registeruser("unclemachete","trc")
+setuptable.registeruser("munay","munay!")

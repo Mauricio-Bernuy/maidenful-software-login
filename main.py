@@ -5,7 +5,7 @@ from timeit import default_timer as timer
 
 import sqlite3
 
-from setuptable import *
+import setuptable 
 
 con = sqlite3.connect('login.db')
 
@@ -15,7 +15,7 @@ app = Flask(__name__)
 def login():
     message = None
     if request.method == 'POST':
-        a = verifyuser(request.form['username'], request.form['password'])
+        a = setuptable.verifyuser(request.form['username'], request.form['password'])
         if not (a):
                 message = 'Error: Invalid Credentials. Please try again.'
         else:
