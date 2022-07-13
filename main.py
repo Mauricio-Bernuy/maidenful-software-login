@@ -7,7 +7,11 @@ import usercreator
 
 # con = sqlite3.connect('login.db')
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    return app
+    
+app = create_app()
 
 @app.route('/index', methods=['GET', 'POST'])
 def login():
