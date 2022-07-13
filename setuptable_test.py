@@ -5,10 +5,10 @@ from time import sleep
 # from selenium.webdriver.common.by import By
 # import unittest
 import pytest
-from main import create_app
+# from main import create_app
 
-import requests
-from flask import url_for
+# import requests
+# from flask import url_for
 
 success_msg = 'Success: Login Sucessful.'
 error_msg = 'Error: Invalid Credentials. Please try again.' 
