@@ -7,5 +7,7 @@ python main.py
 
 ## Run tests with
 ```bash
-pytest  
+coverage run --source=.\ -m pytest -v .\ && coverage report -m        
+coverage xml  
 ```
+
